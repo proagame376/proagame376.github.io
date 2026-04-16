@@ -3,247 +3,330 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>ART IN FRAME | สุนทรียะแห่งกรอบรูปและการบูรณะ</title>
+    <title>ART IN FRAME | ศาสตราจารย์แห่งกรอบและการคืนชีพจิตวิญญาณงานศิลป์</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Noto+Serif+Thai:wght@300;500&family=Sarabun:wght@200;400;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+Thai:wght@200;400;600&family=Sarabun:wght@100;300;400&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 
     <style>
         :root {
-            --gold: #c9a84c;
-            --gold-light: #e8c96a;
-            --gold-dim: #8a6f2e;
-            --gold-border: rgba(201, 168, 76, 0.25);
-            --bg: #0a0a0a;
-            --bg-card: #111111;
-            --text: #e8e4dc;
-            --text-muted: #9a9080;
-            --serif: 'Noto Serif Thai', serif;
-            --latin: 'Cormorant Garamond', serif;
-            --sans: 'Sarabun', sans-serif;
+            --onyx: #050505;
+            --gold-leaf: #b8860b;
+            --gold-bright: #ffd700;
+            --gold-dust: rgba(184, 134, 11, 0.15);
+            --ethereal-white: #fdfbf7;
+            --text-dim: #7a756d;
+            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        /* --- Fundamental Reset --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; background-color: var(--onyx); }
         body {
-            font-family: var(--sans);
-            background: var(--bg);
-            color: var(--text);
+            font-family: 'Sarabun', sans-serif;
+            background: var(--onyx);
+            color: var(--ethereal-white);
             overflow-x: hidden;
-            line-height: 1.6;
-            cursor: none; /* ใช้ Custom Cursor */
+            cursor: none;
         }
 
-        /* --- Custom Cursor --- */
-        .cursor {
-            width: 8px; height: 8px; background: var(--gold);
+        /* --- Spiritual Background (Sacred Geometry) --- */
+        .sacred-bg {
+            position: fixed; inset: 0; z-index: -1;
+            background: 
+                radial-gradient(circle at 50% 50%, #111 0%, #050505 100%);
+            overflow: hidden;
+        }
+        .sacred-bg svg {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150vmax; height: 150vmax;
+            opacity: 0.03;
+            animation: rotateSacred 120s linear infinite;
+        }
+        @keyframes rotateSacred { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+        /* --- Custom Cursor (The Halo) --- */
+        #cursor {
+            width: 10px; height: 10px; background: var(--gold-bright);
+            border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000;
+            mix-blend-mode: difference;
+        }
+        #cursor-halo {
+            width: 50px; height: 50px; border: 1px solid var(--gold-leaf);
             border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999;
-            transform: translate(-50%, -50%); transition: transform 0.1s;
-        }
-        .cursor-ring {
-            width: 40px; height: 40px; border: 1px solid var(--gold);
-            border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998;
-            transform: translate(-50%, -50%); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: width 0.3s, height 0.3s, background 0.3s;
         }
 
-        /* --- Noise Overlay --- */
-        body::before {
-            content: ''; position: fixed; inset: 0; z-index: 9990;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-
-        /* --- Navigation --- */
+        /* --- Navigation: Minimalist & Floating --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 2rem 4rem; transition: 0.4s;
+            padding: 2.5rem 5%; transition: var(--transition);
         }
-        nav.scrolled {
-            padding: 1rem 4rem; background: rgba(10,10,10,0.9);
-            backdrop-filter: blur(15px); border-bottom: 1px solid var(--gold-border);
+        nav.scrolled { padding: 1.2rem 5%; background: rgba(5,5,5,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--gold-dust); }
+        .logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 0.3em; color: var(--gold-leaf); text-decoration: none; }
+        .nav-links { display: flex; gap: 4rem; }
+        .nav-links a { 
+            text-decoration: none; color: var(--text-dim); font-size: 0.75rem; 
+            letter-spacing: 0.2em; text-transform: uppercase; transition: 0.4s;
         }
-        .logo {
-            font-family: var(--latin); font-size: 1.8rem; font-weight: 600;
-            color: var(--gold-light); text-decoration: none; font-style: italic;
-        }
-        .nav-links { display: flex; gap: 3rem; }
-        .nav-links a {
-            text-decoration: none; color: var(--text-muted); font-size: 0.9rem;
-            letter-spacing: 0.1em; transition: 0.3s; text-transform: uppercase;
-        }
-        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover { color: var(--gold-bright); text-shadow: 0 0 10px var(--gold-dust); }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section: The Portal --- */
         #hero {
-            height: 100vh; display: flex; align-items: center; justify-content: center;
-            padding: 0 4rem; position: relative;
+            height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; position: relative; padding: 0 10%;
         }
-        .hero-content {
-            z-index: 2; text-align: center; max-width: 900px;
+        .hero-eyebrow {
+            font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.8em;
+            color: var(--gold-leaf); margin-bottom: 2rem; opacity: 0; transform: translateY(30px);
         }
         .hero-title {
-            font-family: var(--latin); font-size: clamp(4rem, 10vw, 8rem);
-            font-weight: 300; line-height: 1; margin-bottom: 1rem;
+            font-family: 'EB Garamond', serif; font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 400; line-height: 1.1; margin-bottom: 2rem;
+            opacity: 0; transform: translateY(50px);
         }
-        .hero-title span { color: var(--gold); font-style: italic; }
-        .hero-sub {
-            font-family: var(--serif); font-size: 1.5rem; color: var(--text-muted);
-            margin-bottom: 2.5rem; font-weight: 300;
+        .hero-title i { font-family: 'Cinzel', serif; font-style: normal; color: var(--gold-leaf); }
+        
+        /* --- The Alchemist Grid (Portfolio) --- */
+        .section-label {
+            font-family: 'Cinzel', serif; padding: 10rem 5% 2rem; text-align: center;
+            letter-spacing: 0.5em; color: var(--gold-leaf); font-size: 0.9rem;
         }
-        .btn-gold {
-            padding: 1rem 2.5rem; background: var(--gold); color: var(--bg);
-            border: none; font-weight: 600; cursor: pointer; transition: 0.3s;
-            text-transform: uppercase; letter-spacing: 0.1em;
+        .portfolio-container {
+            display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px;
+            padding: 0 5% 10rem; max-width: 1800px; margin: 0 auto;
         }
-        .btn-gold:hover { background: var(--gold-light); transform: translateY(-3px); }
+        .portfolio-item {
+            position: relative; overflow: hidden; background: #000;
+            transition: var(--transition); filter: grayscale(1);
+        }
+        .portfolio-item:hover { filter: grayscale(0); transform: translateY(-10px); z-index: 10; box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .portfolio-item:hover img { transform: scale(1.1); }
 
-        /* --- Marquee --- */
-        .marquee {
-            background: var(--gold-border); padding: 1rem 0;
-            overflow: hidden; white-space: nowrap;
+        /* Layout Grid สำหรับคอมพิวเตอร์ (สไตล์แกลเลอรี่ระดับโลก) */
+        .item-lg { grid-column: span 8; aspect-ratio: 16/9; }
+        .item-md { grid-column: span 4; aspect-ratio: 4/5; }
+        .item-sm { grid-column: span 3; aspect-ratio: 1; }
+        .item-vert { grid-column: span 4; aspect-ratio: 9/16; }
+
+        .item-caption {
+            position: absolute; inset: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem;
+            opacity: 0; transition: 0.5s;
         }
-        .marquee-inner {
-            display: inline-block; animation: scroll 30s linear infinite;
+        .portfolio-item:hover .item-caption { opacity: 1; }
+        .item-caption h3 { font-family: 'EB Garamond', serif; font-size: 1.5rem; color: var(--gold-bright); }
+
+        /* --- The Wisdom Section (Content) --- */
+        .wisdom-block {
+            display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; align-items: center;
+            padding: 5% 10%; gap: 10%; border-top: 1px solid var(--gold-dust);
         }
-        .marquee span {
-            font-family: var(--latin); font-size: 1.2rem; margin: 0 2rem;
-            color: var(--gold-light); text-transform: uppercase;
+        .wisdom-text h2 {
+            font-family: 'Noto Serif Thai', serif; font-size: 3rem; font-weight: 200;
+            margin-bottom: 2rem; color: var(--gold-leaf);
+        }
+        .wisdom-text p {
+            font-size: 1.1rem; line-height: 2; color: var(--text-dim); font-weight: 300;
         }
 
-        @keyframes scroll {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        /* --- Gallery Section --- */
-        #gallery { padding: 8rem 4rem; }
-        .section-header { margin-bottom: 4rem; border-left: 2px solid var(--gold); padding-left: 2rem; }
-        .gallery-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        .gallery-item {
-            position: relative; overflow: hidden; aspect-ratio: 4/5;
-            background: var(--bg-card); border: 1px solid var(--gold-border);
-        }
-        .gallery-item img {
-            width: 100%; height: 100%; object-fit: cover; transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
-            filter: grayscale(0.5) contrast(1.1);
-        }
-        .gallery-item:hover img { transform: scale(1.1); filter: grayscale(0); }
-        .item-overlay {
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 2rem;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            opacity: 0; transition: 0.4s;
-        }
-        .gallery-item:hover .item-overlay { opacity: 1; }
-
-        /* --- Footer --- */
+        /* --- Footer: The Final Reflection --- */
         footer {
-            padding: 4rem; border-top: 1px solid var(--gold-border);
-            text-align: center; color: var(--text-dim);
+            padding: 10rem 10% 5rem; text-align: center; border-top: 1px solid var(--gold-dust);
+            background: radial-gradient(circle at top, #111 0%, var(--onyx) 100%);
+        }
+        .footer-logo { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold-leaf); margin-bottom: 2rem; display: block; }
+        .footer-contact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 4rem 0; }
+        .contact-box h4 { font-family: 'Cinzel', serif; color: var(--gold-leaf); margin-bottom: 1rem; letter-spacing: 0.2em; }
+        
+        /* --- Responsive Logic --- */
+        @media (max-width: 1024px) {
+            .nav-links { display: none; } /* ซ่อนเมนูบนมือถือเพื่อความคลีน */
+            .portfolio-container { grid-template-columns: repeat(6, 1fr); }
+            .item-lg, .item-md, .item-sm, .item-vert { grid-column: span 3; }
+            .wisdom-block { grid-template-columns: 1fr; text-align: center; }
         }
 
-        @media (max-width: 768px) {
-            nav { padding: 1.5rem; }
-            .nav-links { display: none; }
-            #hero { padding: 0 1.5rem; }
-            .hero-title { font-size: 4rem; }
+        @media (max-width: 600px) {
+            .portfolio-container { grid-template-columns: 1fr; }
+            .item-lg, .item-md, .item-sm, .item-vert { grid-column: span 1; }
+            .hero-title { font-size: 2.5rem; }
+            .footer-contact { grid-template-columns: 1fr; }
         }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(50px); transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-ring" id="cursor-ring"></div>
+    <div class="sacred-bg">
+        <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="0.1"/>
+            <path d="M50 5 L95 95 L5 95 Z" fill="none" stroke="currentColor" stroke-width="0.1"/>
+            <path d="M50 95 L5 5 L95 5 Z" fill="none" stroke="currentColor" stroke-width="0.1"/>
+        </svg>
+    </div>
+
+    <div id="cursor"></div>
+    <div id="cursor-halo"></div>
 
     <nav id="navbar">
         <a href="#" class="logo">ART IN FRAME</a>
         <div class="nav-links">
-            <a href="#hero">หน้าหลัก</a>
-            <a href="#gallery">แกลเลอรี่</a>
-            <a href="#services">บริการ</a>
-            <a href="#contact">ติดต่อ</a>
+            <a href="#philosophy">ปรัชญา</a>
+            <a href="#gallery">หอศิลป์</a>
+            <a href="#services">การคืนชีพ</a>
+            <a href="#contact">สนทนา</a>
+        </div>
+        <div style="color: var(--gold-leaf); cursor: pointer;">
+            <span class="material-symbols-outlined">menu</span>
         </div>
     </nav>
 
     <section id="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Timeless <span>Elegance</span></h1>
-            <p class="hero-sub">นิยามใหม่ของความประณีต ในทุกองศาของกรอบรูป</p>
-            <button class="btn-gold">เริ่มต้นออกแบบงานของคุณ</button>
+        <div class="hero-eyebrow" id="eyebrow">ESTABLISHED 1994</div>
+        <h1 class="hero-title" id="title">
+            The <i>Art</i> of <br>Sanctifying Memories
+        </h1>
+        <p style="font-weight: 100; letter-spacing: 0.3em; color: var(--text-dim);" class="reveal">ให้กรอบรูปเป็นพรมแดน ระหว่างความจริงและจินตนาการ</p>
+    </section>
+
+    <div class="section-label">SELECTED MANIFESTATIONS</div>
+    <section class="portfolio-container" id="gallery">
+        <div class="portfolio-item item-lg reveal">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1500" alt="Restoration">
+            <div class="item-caption">
+                <p>RESTORE</p>
+                <h3>The Golden Renaissance</h3>
+            </div>
+        </div>
+        <div class="portfolio-item item-md reveal">
+            <img src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?q=80&w=1200" alt="Classic">
+            <div class="item-caption">
+                <p>CRAFT</p>
+                <h3>Ancestral Soul</h3>
+            </div>
+        </div>
+        <div class="portfolio-item item-md reveal">
+            <img src="https://images.unsplash.com/photo-1576016770956-debb63d92058?q=80&w=1200" alt="Modern">
+            <div class="item-caption">
+                <p>MODERN</p>
+                <h3>Minimalist Void</h3>
+            </div>
+        </div>
+        <div class="portfolio-item item-sm reveal">
+            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800" alt="Detail">
+        </div>
+        <div class="portfolio-item item-sm reveal">
+            <img src="https://images.unsplash.com/photo-1501472312651-726afe119ff1?q=80&w=800" alt="Detail">
+        </div>
+        <div class="portfolio-item item-vert reveal">
+            <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=1000" alt="Deep">
+            <div class="item-caption">
+                <p>PHILOSOPHY</p>
+                <h3>Deep Reflection</h3>
+            </div>
         </div>
     </section>
 
-    <div class="marquee">
-        <div class="marquee-inner">
-            <span>Premium Framing</span> <span>·</span> <span>Art Restoration</span> <span>·</span> 
-            <span>Museum Quality</span> <span>·</span> <span>Custom Gilded Frames</span> <span>·</span>
-            <span>Premium Framing</span> <span>·</span> <span>Art Restoration</span> <span>·</span> 
-            <span>Museum Quality</span> <span>·</span> <span>Custom Gilded Frames</span> <span>·</span>
+    <section class="wisdom-block" id="philosophy">
+        <div class="wisdom-image reveal">
+            <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=1000" style="width: 100%; border: 1px solid var(--gold-dust); padding: 20px;" alt="Handicraft">
         </div>
-    </div>
-
-    <section id="gallery">
-        <div class="section-header">
-            <h2 style="font-family: var(--serif); font-size: 2.5rem;">Selected Works</h2>
-            <p style="color: var(--text-muted);">ผลงานชิ้นเอกที่ได้รับความไว้วางใจ</p>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=80" alt="Work 1">
-                <div class="item-overlay">
-                    <p style="color: var(--gold);">RESTORATION</p>
-                    <h3>The Golden Era</h3>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&w=800&q=80" alt="Work 2">
-                <div class="item-overlay">
-                    <p style="color: var(--gold);">MUSEUM FRAME</p>
-                    <h3>Classic Portrait</h3>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=800&q=80" alt="Work 3">
-                <div class="item-overlay">
-                    <p style="color: var(--gold);">MODERN</p>
-                    <h3>Abstract Vision</h3>
-                </div>
-            </div>
+        <div class="wisdom-text reveal">
+            <h2>ประณีตดั่งการเจริญสติ</h2>
+            <p>
+                เราไม่ได้มองว่าการทำกรอบรูปคือการประกอบวัสดุ แต่คือการ "สร้างพื้นที่ศักดิ์สิทธิ์" ให้กับผลงาน 
+                ทุกรอยตัดไม้ ทุกการลงทองคำเปลว คือการทำสมาธิเพื่อให้ได้ผลงานที่ไร้ที่ติ 
+                ดุจเดียวกับการจัดเรียงดวงดาวในระบบจักรวาล
+            </p>
+            <div style="margin-top: 3rem; color: var(--gold-bright); font-family: 'Cinzel'; letter-spacing: 0.5em;">PROTOCOL ZERO</div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 ART IN FRAME. All Rights Reserved.</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem; color: var(--gold-dim);">Crafted with Excellence</p>
+        <span class="footer-logo">ART IN FRAME</span>
+        <div class="footer-contact">
+            <div class="contact-box">
+                <h4>LOCATION</h4>
+                <p>Bangkok, Thailand</p>
+            </div>
+            <div class="contact-box">
+                <h4>CONNECT</h4>
+                <p>Line: @artinframe<br>IG: artinframe.th</p>
+            </div>
+            <div class="contact-box">
+                <h4>JOURNEY</h4>
+                <p>เปิดใจรับชมผลงาน<br>จันทร์ - เสาร์: 09:00 - 18:00</p>
+            </div>
+        </div>
+        <p style="font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.2em;">© 2026 THE ALCHEMY OF FRAMING</p>
     </footer>
 
     <script>
-        // Custom Cursor Logic
+        // --- Halo Cursor Logic ---
         const cursor = document.getElementById('cursor');
-        const ring = document.getElementById('cursor-ring');
+        const halo = document.getElementById('cursor-halo');
         
         document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
+            const { clientX: x, clientY: y } = e;
+            cursor.style.left = x + 'px';
+            cursor.style.top = y + 'px';
             
-            // Ring Follow with slight delay
-            setTimeout(() => {
-                ring.style.left = e.clientX + 'px';
-                ring.style.top = e.clientY + 'px';
-            }, 50);
+            halo.animate({
+                left: x + 'px',
+                top: y + 'px'
+            }, { duration: 600, fill: 'forwards' });
         });
 
-        // Navbar Scroll Effect
+        // Hover Effect on Images
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                halo.style.width = '100px';
+                halo.style.height = '100px';
+                halo.style.background = 'var(--gold-dust)';
+            });
+            item.addEventListener('mouseleave', () => {
+                halo.style.width = '50px';
+                halo.style.height = '50px';
+                halo.style.background = 'transparent';
+            });
+        });
+
+        // --- Reveal on Scroll Logic ---
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- Hero Entrance ---
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById('eyebrow').style.opacity = '1';
+                document.getElementById('eyebrow').style.transform = 'translateY(0)';
+            }, 500);
+            setTimeout(() => {
+                document.getElementById('title').style.opacity = '1';
+                document.getElementById('title').style.transform = 'translateY(0)';
+            }, 800);
+        };
+
+        // Navbar Scroll
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+            if (window.scrollY > 100) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         });
     </script>
 </body>
